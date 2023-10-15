@@ -13,9 +13,13 @@ namespace lib.Plugin.Implementation
         public override Image Image { get; } = null!;
         public override string Description { get; }
 
-       /// <summary>
-       /// Делит первое число на второе
-       /// </summary>
+    /// <summary>
+    /// Делит первое число на второе число
+    /// </summary>
+    /// <param name="value1">Делимое</param>
+    /// <param name="value2">Делитель</param>
+    /// <returns></returns>
+    /// <exception cref="DivideByZeroException"></exception>
         public override int Run(int value1, int value2)
         {
             if (value2 == 0)
