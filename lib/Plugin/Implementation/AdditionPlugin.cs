@@ -12,9 +12,12 @@ namespace ds.test.impl
         public override Image Image { get; } = null!;
         public override string Description { get; }
 
-        public override int Run(int input1, int input2)
+        /// <summary>
+        /// Складывает два числа
+        /// </summary>
+        public override int Run(int value1, int value2)
         {
-            return input1 + input2;
+            return value1 + value2;
         }
 
         public AdditionPlugin(string pluginName, string version, Image image, string description) 

@@ -15,7 +15,7 @@ namespace ds.test.impl
 
         public abstract string Description { get; }
 
-        public abstract int Run(int input1, int input2);
+        public abstract int Run(int value1, int value2);
 
     }
 }

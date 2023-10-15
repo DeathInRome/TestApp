@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿
 
 namespace ds.test.impl
 {
@@ -13,7 +13,7 @@ namespace ds.test.impl
         /// <summary>
         /// Вернуть число записей
         /// </summary>
-        public int PluginsCount => _plugins.Count;
+        public int? PluginsCount => _plugins?.Count;
 
         /// <summary>
         /// Получить список имен плагинов
@@ -28,12 +28,12 @@ namespace ds.test.impl
         public IPlugin GetPlugin(string namePlugin)
         {
             if(_plugins.Count<1)
-                throw new ArgumentNullException($"Отсутствуют значения в коллекции");
+                throw new ArgumentNullException($"Коллекция с плагинами пуста.");
 
             IPlugin? plugin = _plugins
                 .SingleOrDefault(plugin => plugin.PluginName == namePlugin);
 
-            return plugin ?? throw new Exception();
+            return plugin ?? throw new InvalidOperationException($"Отсутствует плагин {namePlugin}");
         }
 
         /// <summary>
