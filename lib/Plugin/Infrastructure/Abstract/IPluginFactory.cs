@@ -5,6 +5,5 @@
          int PluginsCount { get; }
          string[]? GetPluginNames { get; }
          IPlugin GetPlugin(string namePlugin);
-        
     }
 }

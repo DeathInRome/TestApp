@@ -5,10 +5,10 @@ namespace ds.test.impl
     /// <summary>
     /// Контейнер с плагинами
     /// </summary>
-    public class Plugins : IPluginFactory
+    internal class Plugins : IPluginFactory
     {
         //Список плагинов
-        private static readonly List<IPlugin> _plugins = new();
+        private static readonly List<PluginBase> _plugins = new();
 
         /// <summary>
         /// Вернуть число записей
@@ -18,10 +18,11 @@ namespace ds.test.impl
         /// <summary>
         /// Получить список имен плагинов
         /// </summary>
-        public string[]? GetPluginNames {
+        public string[]? GetPluginNames
+        {
             get
             {
-                if( _plugins.Count < 1 )
+                if (_plugins.Count < 1)
                     throw new ArgumentNullException("Отсутствуют плагины");
 
                 string[]? pluginNames = _plugins?
@@ -49,10 +50,10 @@ namespace ds.test.impl
         /// <summary>
         /// Метод для добавления новых плагинов
         /// </summary>
-        public void RegisterPlugin(IPlugin plugin)
+        public void RegisterPlugin(PluginBase plugin)
         {
             if (plugin == null)
-                throw new ArgumentNullException($"Пустой аргумент {plugin}") ;
+                throw new ArgumentNullException($"Пустой аргумент {plugin}");
 
             _plugins.Add(plugin);
         }
