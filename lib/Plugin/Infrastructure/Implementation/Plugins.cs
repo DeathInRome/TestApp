@@ -7,26 +7,39 @@ namespace ds.test.impl
     /// </summary>
     public class Plugins : IPluginFactory
     {
-        //Коллекия плагинов
+        //Список плагинов
         private static readonly List<IPlugin> _plugins = new();
 
         /// <summary>
         /// Вернуть число записей
         /// </summary>
-        public int? PluginsCount => _plugins?.Count;
+        public int? PluginsCount => _plugins.Count;
 
         /// <summary>
         /// Получить список имен плагинов
         /// </summary>
-        public string[] GetPluginNames => _plugins
-            .Select(name => name.PluginName)
-            .ToArray();
+        public string[]? GetPluginNames {
+            get
+            {
+                if( _plugins.Count < 1 )
+                    throw new ArgumentNullException("Отсутствуют плагины");
+
+                string[]? pluginNames = _plugins?
+               .Select(name => name.PluginName)
+               .ToArray();
+                return pluginNames;
+
+            }
+        }
 
         /// <summary>
         /// Вернуть плагин по имени
         /// </summary>
         public IPlugin GetPlugin(string namePlugin)
         {
+            if (_plugins.Count < 1)
+                throw new ArgumentNullException("Отсутствуют плагины");
+
             IPlugin? plugin = _plugins
                 .SingleOrDefault(plugin => plugin.PluginName == namePlugin);
 
