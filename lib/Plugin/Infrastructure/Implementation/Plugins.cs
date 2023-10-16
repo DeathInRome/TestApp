@@ -41,7 +41,7 @@ namespace ds.test.impl
             if (_plugins.Count < 1)
                 throw new ArgumentNullException($"Отсутствуют плагин {namePlugin}");
 
-            IPlugin? plugin = _plugins
+            PluginBase? plugin = _plugins
                 .SingleOrDefault(plugin => plugin.PluginName == namePlugin);
 
             return plugin ?? throw new InvalidOperationException($"Отсутствует плагин {namePlugin}");
