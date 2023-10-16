@@ -1,6 +1,4 @@
-﻿
-
-namespace ds.test.impl
+﻿namespace ds.test.impl
 {
     /// <summary>
     /// Контейнер с плагинами
