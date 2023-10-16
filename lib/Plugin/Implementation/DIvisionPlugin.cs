@@ -6,7 +6,7 @@ namespace lib.Plugin.Implementation
     /// <summary>
     /// Плагин для деления
     /// </summary>
-    internal class DivinePlugin : PluginBase
+    internal class DivisionPlugin : PluginBase
     {
         public override string PluginName { get; }
         public override string Version { get; }
@@ -18,8 +18,6 @@ namespace lib.Plugin.Implementation
     /// </summary>
     /// <param name="value1">Делимое</param>
     /// <param name="value2">Делитель</param>
-    /// <returns></returns>
-    /// <exception cref="DivideByZeroException"></exception>
         public override int Run(int value1, int value2)
         {
             if (value2 == 0)
@@ -28,7 +26,7 @@ namespace lib.Plugin.Implementation
             return value1 / value2;
         }
 
-        public DivinePlugin(string pluginName, string version, Image image, string description) 
+        public DivisionPlugin(string pluginName, string version, Image image, string description) 
         {
             PluginName = pluginName;
             Version = version;
