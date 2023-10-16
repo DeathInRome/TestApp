@@ -13,7 +13,7 @@ namespace ds.test.impl
         /// <summary>
         /// Вернуть число записей
         /// </summary>
-        public int? PluginsCount => _plugins.Count;
+        public int PluginsCount => _plugins.Count;
 
         /// <summary>
         /// Получить список имен плагинов
@@ -25,10 +25,10 @@ namespace ds.test.impl
                     throw new ArgumentNullException("Отсутствуют плагины");
 
                 string[]? pluginNames = _plugins?
-               .Select(name => name.PluginName)
-               .ToArray();
-                return pluginNames;
+                    .Select(name => name.PluginName)
+                    .ToArray();
 
+                return pluginNames;
             }
         }
 
@@ -38,7 +38,7 @@ namespace ds.test.impl
         public IPlugin GetPlugin(string namePlugin)
         {
             if (_plugins.Count < 1)
-                throw new ArgumentNullException("Отсутствуют плагины");
+                throw new ArgumentNullException($"Отсутствуют плагин {namePlugin}");
 
             IPlugin? plugin = _plugins
                 .SingleOrDefault(plugin => plugin.PluginName == namePlugin);
@@ -52,7 +52,7 @@ namespace ds.test.impl
         public void RegisterPlugin(IPlugin plugin)
         {
             if (plugin == null)
-                throw new ArgumentNullException($"Пустой аргумент") ;
+                throw new ArgumentNullException($"Пустой аргумент {plugin}") ;
 
             _plugins.Add(plugin);
         }
